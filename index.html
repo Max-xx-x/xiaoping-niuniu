@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#6c8155">
+  <meta name="description" content="小萍照顾牛牛、准备便当、种植食材、换装并等待旅途明信片的温馨手机小游戏。">
+  <title>小萍的牛犊养殖场</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="app" id="app">
+  <section class="screen intro" id="intro">
+    <img class="scene-bg" src="assets/farm-exterior-v2.webp" alt="温暖的牛犊养殖场、花草与远山">
+    <div class="scene-shade"></div>
+    <div class="intro-top"><span class="weather">☀ 贵阳 · 风轻轻的</span><button class="sound-toggle" type="button" data-sound-toggle>♫<span>音乐</span></button></div>
+    <div class="intro-card glass"><p class="eyebrow">XIAOPING'S LITTLE FARM</p><h1>小萍的<br>牛犊养殖场</h1><p>牛牛住在花草、木屋和暖风之间。小萍准备好行囊，它就会从贵阳出发，把一路风景寄回家。</p><button class="primary" type="button" id="enterBtn">去看看牛牛</button><small class="tiny-note">戴上耳机，听一段原创的舒缓小调</small></div>
+  </section>
+
+  <section class="screen home" id="home" hidden>
+    <img class="scene-bg" src="assets/calf-home-v2.webp" alt="有草料、食槽和旅行用品的牛牛木屋"><div class="scene-shade"></div>
+    <header class="topbar"><div class="day-card glass"><span class="sun">☀</span><span class="day-copy"><strong id="dateText">今天</strong><small>牛牛的小木屋</small></span></div><div class="right-tools"><button class="sound-toggle light-sound" type="button" data-sound-toggle>♫<span>音乐</span></button><div class="stat-card glass"><span>🍀</span><b id="cloverCount">12</b><span>♥</span><b id="heartCount">12</b></div></div></header>
+    <span class="room-title">青草香、木头香，还有小萍回家的声音</span><button class="visitor-badge glass" type="button" id="visitorBadge" hidden>🐝 有朋友来串门</button>
+    <div class="play-area"><div class="speech glass" id="speech">小萍回来啦……牛牛其实等了好一会儿。</div><div class="avatar-stage" id="avatarStage" aria-label="牛牛，可以摸不同部位"><img class="avatar-base" src="assets/niuniu-base.webp" alt="拟人化的小牛牛牛"><span data-layer="bottom" hidden></span><span data-layer="top" hidden></span><span data-layer="glasses" hidden></span><span data-layer="hat" hidden></span><button class="touch-zone zone-head" data-part="head" data-label="牛头" aria-label="摸摸牛头"></button><button class="touch-zone zone-ear" data-part="ear" data-label="牛耳朵" aria-label="摸摸牛耳朵"></button><button class="touch-zone zone-nose" data-part="nose" data-label="牛鼻子" aria-label="碰碰牛鼻子"></button><button class="touch-zone zone-body" data-part="body" data-label="牛身子" aria-label="摸摸牛身子"></button><button class="touch-zone zone-tail" data-part="tail" data-label="牛尾巴" aria-label="摸摸牛尾巴"></button><button class="touch-zone zone-feet" data-part="feet" data-label="牛脚" aria-label="摸摸牛脚"></button></div><div class="away-note glass" id="awayNote" hidden><strong>牛牛出门旅行了</strong>途中每到一站，都可能先寄一张明信片回来。</div></div>
+    <nav class="dock glass" aria-label="主要操作"><button class="action" id="touchGuideBtn"><span class="icon">🫳</span>摸摸</button><button class="action" id="bagBtn"><span class="icon">🍱</span>行囊</button><button class="action" id="letterBtn"><span class="icon">💌</span>来信</button><button class="action" id="mapBtn"><span class="icon">🗺️</span>场景</button><button class="action primary-action" id="travelBtn"><span class="icon">✈️</span><span id="travelLabel">出发</span></button></nav>
+  </section>
+
+  <section class="screen garden" id="garden" hidden><img class="scene-bg" src="assets/garden-v1.webp" alt="牛牛的暖阳花园和种植田"><div class="scene-shade"></div><header class="scene-header"><button class="round-back" data-home aria-label="回到木屋">‹</button><h2>牛牛的暖阳花园</h2><button class="sound-toggle" data-sound-toggle>♫<span>音乐</span></button></header><div class="scene-panel glass"><h3>今天种点什么？</h3><p class="panel-lead">作物会按真实时间慢慢成熟，收好后就会进入仓库。</p><div class="clover-patch"><span>🍀</span><strong id="cloverPatchText">三叶草正在慢慢长</strong><button class="soft-button" id="harvestCloverBtn">收三叶草</button></div><div class="garden-grid" id="gardenGrid"></div><div class="panel-actions"><button class="soft-button" data-warehouse>查看仓库</button><button class="soft-button" data-place="kitchen">去小萍的厨房</button></div></div></section>
+
+  <section class="screen kitchen" id="kitchen" hidden><img class="scene-bg" src="assets/kitchen-v1.webp" alt="温暖的小萍厨房"><div class="scene-shade"></div><header class="scene-header"><button class="round-back" data-home aria-label="回到木屋">‹</button><h2>小萍的厨房</h2><button class="sound-toggle" data-sound-toggle>♫<span>音乐</span></button></header><div class="scene-panel glass"><h3>给牛牛做便当</h3><p class="panel-lead" id="kitchenStats">健康与心情</p><div class="recipe-list" id="recipeList"></div><button class="close-sheet" data-warehouse>打开食物仓库</button></div></section>
+
+  <section class="screen wardrobe" id="wardrobe" hidden><img class="scene-bg" src="assets/calf-home-v2.webp" alt="牛牛的换装角落"><div class="scene-shade"></div><header class="scene-header"><button class="round-back" data-home aria-label="回到木屋">‹</button><h2>牛牛的衣帽间</h2><button class="sound-toggle" data-sound-toggle>♫<span>音乐</span></button></header><div class="wardrobe-stage" id="wardrobeStage"><img src="assets/niuniu-base.webp" alt="正在换装的牛牛"><span data-layer="bottom" hidden></span><span data-layer="top" hidden></span><span data-layer="glasses" hidden></span><span data-layer="hat" hidden></span></div><div class="wardrobe-panel glass"><div class="wardrobe-tabs"><button class="wardrobe-tab" data-category="top" aria-selected="true">上衣</button><button class="wardrobe-tab" data-category="bottom">下衣</button><button class="wardrobe-tab" data-category="glasses">眼镜</button><button class="wardrobe-tab" data-category="hat">帽子</button></div><div class="wardrobe-options" id="wardrobeOptions"></div><button class="close-sheet" data-home>搭配好了</button></div></section>
+
+  <section class="screen trip" id="trip" hidden><img class="scene-bg" src="assets/farm-exterior-v2.webp" alt="牛牛旅行中的远方天空"><div class="scene-shade"></div><header class="scene-header"><button class="round-back" id="tripBackBtn" aria-label="先回木屋">‹</button><h2>牛牛的旅途</h2><button class="sound-toggle" data-sound-toggle>♫<span>音乐</span></button></header><article class="postcard"><div class="destination-scene" id="tripScene"><span class="postcard-calf-stack"><img src="assets/niuniu-base.webp" alt="旅行中的牛牛"><span data-layer="bottom" hidden></span><span data-layer="top" hidden></span><span data-layer="glasses" hidden></span><span data-layer="hat" hidden></span></span><span class="postcard-place">旅途中</span><span class="stamp">🐮</span></div><div class="postcard-copy"><p>“小萍，沿途的风景也要一站一站寄给你。”</p><small>FROM 牛牛</small></div></article><div class="trip-status"><p id="tripMessage">牛牛正在路上。</p><p class="route-progress" id="routeProgress"></p><div class="progress"><span id="progressBar"></span></div><small class="countdown" id="countdown">正在计算旅途时间</small></div></section>
+
+  <div class="overlay" id="foodOverlay" hidden><section class="sheet"><div class="sheet-handle"></div><h2>准备旅行行囊</h2><p class="sheet-lead">便当必须有。食物能量决定牛牛从贵阳能飞多远；护身符管幸运，道具影响途中场景。</p><div class="flight-board"><strong>贵阳出发 · 参考航程</strong><span>北海 1时30分</span><span>西安 2小时</span><span>三亚 2小时</span><span>拉萨 2时30分</span><span>京都 8小时</span><span>巴黎 17小时</span><small>按常见飞行时间估算，不含候机和中转；游戏会真实等待。</small></div><div class="item-list" id="foodList"></div><div class="bag-tools"><span class="bag-summary"><strong id="bagCount">已选 0/5</strong><small id="bagTime">至少准备一份便当</small></span><button class="random-button" id="randomBagBtn">随机搭配</button></div><div class="supply-selects"><label>护身符<select id="charmSelect"></select></label><label>旅行道具<select id="toolSelect"></select></label></div><button class="pack-button" id="packBtn">装进行囊</button><button class="close-sheet" data-close="foodOverlay">先不准备</button></section></div>
+
+  <div class="overlay" id="letterOverlay" hidden><section class="sheet"><div class="sheet-handle"></div><h2 id="letterTitle">远方来信</h2><p class="sheet-lead" id="letterLead">信箱还安安静静的。</p><div class="saved-postcard" id="savedPostcard" hidden><div class="destination-scene" id="savedScene"><span class="postcard-calf-stack"><img src="assets/niuniu-base.webp" alt="明信片里的牛牛"><span data-layer="bottom" hidden></span><span data-layer="top" hidden></span><span data-layer="glasses" hidden></span><span data-layer="hat" hidden></span></span><span class="postcard-place">旅途中</span><span class="stamp">💌</span></div><p id="letterText"></p><small class="letter-route" id="letterRoute"></small></div><p class="souvenir" id="souvenirText">还没有旅行纪念品</p><button class="close-sheet" data-close="letterOverlay">收好来信</button></section></div>
+
+  <div class="overlay" id="mapOverlay" hidden><section class="sheet"><div class="sheet-handle"></div><h2>去哪里看看？</h2><p class="sheet-lead">小萍可以照顾家里的每个角落。</p><div class="map-list"><button class="map-place" data-place="home"><span>🏠</span><strong>牛牛的小木屋</strong></button><button class="map-place" data-place="garden"><span>🌱</span><strong>暖阳花园</strong></button><button class="map-place" data-place="kitchen"><span>🍳</span><strong>小萍的厨房</strong></button><button class="map-place" data-place="wardrobe"><span>👕</span><strong>牛牛的衣帽间</strong></button></div><button class="close-sheet" data-close="mapOverlay">关上地图</button></section></div>
+
+  <div class="overlay" id="plantOverlay" hidden><section class="sheet"><div class="sheet-handle"></div><h2>选一颗种子</h2><p class="sheet-lead">种下后就让阳光和时间慢慢照顾它。</p><div class="crop-list" id="cropChoices"></div><button class="close-sheet" data-close="plantOverlay">先不种</button></section></div>
+
+  <div class="overlay" id="warehouseOverlay" hidden><section class="sheet"><div class="sheet-handle"></div><h2>花园仓库</h2><p class="sheet-lead" id="warehouseMeta"></p><div class="inventory-grid" id="inventoryGrid"></div><h3>三叶草小铺</h3><p class="sheet-lead">帐篷去露营，木碗找水边，提灯拍夜景；护身符会带来幸运。</p><div class="item-list" id="shopList"></div><button class="close-sheet" data-close="warehouseOverlay">关好仓库</button></section></div>
+
+  <div class="overlay" id="visitorOverlay" hidden><section class="sheet visitor-sheet"><div class="sheet-handle"></div><span class="visitor-big" id="visitorIcon">🐝</span><h2 id="visitorTitle">朋友来拜访啦</h2><p class="sheet-lead" id="visitorText"></p><button class="pack-button" id="feedVisitorBtn">用仓库食物招待</button><button class="close-sheet" data-close="visitorOverlay">等一会儿</button></section></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</main>
+<script src="app.js" defer></script>
+</body>
+</html>
+
